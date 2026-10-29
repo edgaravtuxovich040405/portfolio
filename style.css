@@ -1,0 +1,487 @@
+/* ==========================================================================
+   1. Dynamic Theme Variable Systems
+   ========================================================================== */
+
+/* Core Cyber Dark Theme (Default Status) */
+:root {
+  --bg-dark: #06060c;
+  --panel-bg: rgba(255, 255, 255, 0.02);
+  --panel-border: rgba(255, 255, 255, 0.06);
+  --glow-cyan: #00f2fe;
+  --glow-magenta: #7f00ff;
+  --glow-lime: #00ff87;
+  --glow-gold: #ffb703;
+  --text-primary: #ffffff;
+  --text-secondary: #8a99ad;
+  --radial-1: rgba(127, 0, 255, 0.07);
+  --radial-2: rgba(0, 242, 254, 0.05);
+  --radial-3: rgba(0, 255, 135, 0.04);
+  --shadow-main: rgba(0, 0, 0, 0.6);
+  --btn-switch-bg: rgba(255, 255, 255, 0.03);
+}
+
+/* Crisp Technical Light Theme Modifications */
+body.light-theme {
+  --bg-dark: #f8fafc;
+  --panel-bg: rgba(255, 255, 255, 0.75);
+  --panel-border: rgba(0, 0, 0, 0.06);
+  --glow-cyan: #0284c7;
+  --glow-magenta: #4f46e5;
+  --glow-lime: #16a34a;
+  --glow-gold: #d97706;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --radial-1: rgba(79, 70, 229, 0.04);
+  --radial-2: rgba(2, 132, 199, 0.03);
+  --radial-3: rgba(22, 163, 74, 0.02);
+  --shadow-main: rgba(15, 23, 42, 0.08);
+  --btn-switch-bg: rgba(0, 0, 0, 0.03);
+}
+
+/* ==========================================================================
+   2. Global Structural Layouts
+   ========================================================================== */
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(at 0% 0%, var(--radial-1) 0px, transparent 40%),
+    radial-gradient(at 100% 0%, var(--radial-2) 0px, transparent 40%),
+    radial-gradient(at 50% 100%, var(--radial-3) 0px, transparent 50%);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px 40px 24px;
+  text-align: center;
+}
+.btn-theme-toggle {
+  background: var(--btn-switch-bg);
+  border: 1px solid var(--panel-border);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 100px;
+  vertical-align: middle;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-theme-toggle:hover {
+  border-color: var(--glow-cyan);
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+}
+
+/* Morphing Sun / Moon CSS Icon Architecture */
+.theme-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Default Status: Moon (Dark Theme) */
+  background: transparent;
+  box-shadow: inset -4px -4px 0px 0px #ffffff;
+}
+
+/* Light Theme Transition: Sun Style */
+body.light-theme .theme-icon {
+  background: var(--glow-gold);
+  box-shadow: inset 0px 0px 0px 0px var(--glow-gold);
+  transform: scale(0.9);
+}
+
+/* Sun Rays Generation */
+body.light-theme .theme-icon::before,
+body.light-theme .theme-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  border: 2px dashed var(--glow-gold);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotateSun 20s linear infinite;
+}
+
+body.light-theme .theme-icon::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@keyframes rotateSun {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.lang-switcher {
+  margin-bottom: 32px;
+}
+
+.btn-lang {
+  background: var(--btn-switch-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--panel-border);
+  padding: 8px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin: 0 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-lang:hover {
+  color: var(--text-primary);
+  border-color: rgba(127, 0, 255, 0.2);
+}
+
+.btn-lang.active {
+  background: linear-gradient(135deg, var(--glow-magenta), var(--glow-cyan));
+  color: #ffffff;
+  font-weight: 700;
+  border-color: transparent;
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.2);
+}
+
+body.light-theme .btn-lang.active {
+  color: #ffffff;
+}
+
+.lang-badges {
+  margin-bottom: 40px;
+}
+
+.lang-badge {
+  display: inline-block;
+  background: var(--btn-switch-bg);
+  color: var(--text-secondary);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 6px;
+  border: 1px solid var(--panel-border);
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin: 16px 0;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  background: linear-gradient(180deg, var(--text-primary) 50%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.35rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   3. Glassmorphic Micro-Components
+   ========================================================================== */
+
+/* Countdown Container Block */
+.timer-container {
+  background: var(--panel-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  padding: 40px 24px;
+  text-align: center;
+  margin-bottom: 60px;
+  box-shadow: 0 40px 80px var(--shadow-main);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.timer-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--glow-cyan), transparent);
+}
+
+.timer-title {
+  color: var(--glow-cyan);
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+}
+
+.timer-display {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -1px;
+}
+
+.timer-segment {
+  position: relative;
+  min-width: 90px;
+}
+
+.timer-segment span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+/* Adaptive Content Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.card {
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 40px;
+  border: 1px solid var(--panel-border);
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease, background 0.5s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--glow-magenta);
+  box-shadow: 0 40px 80px var(--shadow-main);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--text-primary) 60%, var(--glow-magenta) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* ==========================================================================
+   Profile Picture Component
+   ========================================================================== */
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.profile-avatar-wrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  padding: 6px;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 10px 30px var(--shadow-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: rgba(255, 255, 255, 0.05);
+  filter: grayscale(20%);
+  transition: filter 0.4s ease;
+}
+
+.profile-avatar-wrapper:hover .profile-avatar {
+  filter: grayscale(0%);
+}
+
+/* Futuristic HUD Flight Radar Animation Ring */
+.hud-scanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 2px dashed var(--glow-cyan);
+  opacity: 0.2;
+  pointer-events: none;
+  animation: radarRotate 25s linear infinite;
+  transition: opacity 0.4s ease, border-color 0.4s ease;
+}
+
+.profile-avatar-wrapper:hover .hud-scanner {
+  opacity: 0.8;
+  border-color: var(--glow-magenta);
+}
+
+body.light-theme .profile-avatar-wrapper:hover .hud-scanner {
+  border-color: var(--glow-magenta);
+}
+
+@keyframes radarRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive constraints for smaller mobile viewports */
+@media (max-width: 600px) {
+  .profile-avatar-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Aviation Accent Architecture */
+.card-aviation:hover {
+  border-color: var(--glow-lime);
+}
+
+.card-aviation h3 {
+  background: linear-gradient(135deg, var(--text-primary) 60%, var(--glow-lime) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Strategic Integration Blocks */
+.card-strategy {
+  grid-column: 1 / -1;
+}
+
+.card-strategy:hover {
+  border-color: var(--glow-gold);
+}
+
+.card-strategy h3 {
+  background: linear-gradient(135deg, var(--text-primary) 60%, var(--glow-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   4. Typography & Nested Elements
+   ========================================================================== */
+
+ul {
+  padding-left: 8px;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 18px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  transition: color 0.3s ease;
+}
+
+li:hover {
+  color: var(--text-primary);
+}
+
+li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--text-secondary);
+  opacity: 0.3;
+  font-family: monospace;
+  font-weight: 700;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.card:hover li::before { color: var(--glow-magenta); opacity: 1; }
+.card-aviation:hover li::before { color: var(--glow-lime); opacity: 1; }
+.card-strategy:hover li::before { color: var(--glow-gold); opacity: 1; }
+
+li strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+footer {
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-top: 1px solid var(--panel-border);
+  margin-top: 100px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   5. Media Query Adjustments
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .card-strategy {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem; }
+  .subtitle { font-size: 1.15rem; }
+  .timer-display { font-size: 2.2rem; gap: 16px; }
+  .timer-segment { min-width: 60px; }
+  .grid { grid-template-columns: 1fr; gap: 20px; }
+  .card { padding: 30px; }
+}

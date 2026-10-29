@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио | Инженер-Программист & Пилот</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151c2c;
+            --accent-blue: #38bdf8;
+            --accent-green: #34d399;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 20px 20px;
+            text-align: center;
+        }
+
+        .lang-switcher {
+            margin-bottom: 20px;
+        }
+
+        .btn-lang {
+            background: #1e293b;
+            color: var(--text-main);
+            border: 1px solid #334155;
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0 5px;
+            transition: all 0.2s;
+        }
+
+        .btn-lang.active {
+            background: var(--accent-blue);
+            color: var(--bg-color);
+            border-color: var(--accent-blue);
+        }
+
+        .lang-badges {
+            margin-bottom: 25px;
+        }
+
+        .lang-badge {
+            display: inline-block;
+            background: #111827;
+            color: var(--accent-green);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            margin: 5px;
+            border: 1px solid #1f2937;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Стиль таймера */
+        .timer-container {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .timer-title {
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-family: monospace;
+            font-size: 1.8rem;
+            color: var(--text-main);
+        }
+
+        .timer-segment span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #1e293b;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-blue);
+            font-size: 1.4rem;
+        }
+
+        .card-green h3 {
+            color: var(--accent-green);
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid #222f47;
+            margin-top: 60px;
+        }
+    </style> -->
+</head>
+<body>
+    <header>
+    <div class="profile-container">
+        <div class="profile-avatar-wrapper">
+        <!-- Replace 'your-photo.jpg' with the actual path to your image file -->
+        <img src="./your_picture.jpg" alt="Edgar Avtukhovich" class="profile-avatar">
+        <div class="hud-scanner"></div>
+        </div>
+    </div>
+
+    <div class="lang-switcher">
+        <button class="btn-lang active" onclick="switchLang('ru')">RU</button>
+        <button class="btn-lang" onclick="switchLang('tr')">TR</button>
+        <button class="btn-lang" onclick="switchLang('uz')">UZ</button>
+        <button class="btn-lang" onclick="switchLang('en')">EN</button>
+        <button onclick="toggleTheme()" class="btn-theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon"></span>
+        </button>
+    </div>
+
+    <h1>Инженер-Программист & Будущий Пилот</h1>
+    <p class="subtitle">Специалист на стыке нанотехнологий, квантовой механики и авиации</p>
+
+    <div class="lang-badges">
+        <span class="lang-badge">O'zbekcha (Native)</span>
+        <span class="lang-badge">Русский (Родной)</span>
+        <span class="lang-badge">Türkçe (Ana dil)</span>
+        <span class="lang-badge">English (Aviation Technical)</span>
+    </div>
+ </header>
+
+
+    <main>
+        <!-- Виджет Таймера обратного отсчета -->
+        <div class="timer-container">
+            <div id="timer-label" class="timer-title">До запуска алгоритма поступления в УИ ГА (Июнь 2029) осталось:</div>
+            <div class="timer-display">
+                <div class="timer-segment"><span id="days">00</span><span data-key="d">дней</span></div>
+                <div class="timer-segment"><span id="hours">00</span><span data-key="h">часов</span></div>
+                <div class="timer-segment"><span id="minutes">00</span><span data-key="m">минут</span></div>
+                <div class="timer-segment"><span id="seconds">00</span><span data-key="s">секунд</span></div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- Блок Науки -->
+            <div class="card">
+                <h3 id="card1-title">Наука и ИТ-Технологии</h3>
+                <ul id="card1-list">
+                    <li><strong>Бакалавриат (2023–2027):</strong> Нанотехнологии и микросистемная техника (28.03.01).</li>
+                    <li><strong>Магистратура (2027–2029):</strong> Проектирование микросхем и квантовые вычисления в РТУ МИРЭА (28.04.01).</li>
+                    <li><strong>Программирование:</strong> Моделирование физических структур, разработка ПО.</li>
+                </ul>
+            </div>
+
+            <!-- Блок Авиации -->
+            <div class="card card-green">
+                <h3 id="card2-title">Авиационные цели</h3>
+                <ul id="card2-list">
+                    <li><strong>Траектория:</strong> Поступление на очный бюджет УИ ГА в 2029 году (Специалитет 25.05.05).</li>
+                    <li><strong>Оптимизация:</strong> Перезачет ~80% теории благодаря дипломам магистра и бакалавра.</li>
+                    <li><strong>ВЛЭК:</strong> Зрение 1.0 (100%), стабильное АД 110/70, полная бессимптомность.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <h3 id="card3-title">Долгосрочная стратегия: Пилот-Исследователь (Post-2034)</h3>
+            <p id="card3-text">Совмещение работы коммерческого пилота на международных линиях (целевые направления: Турция / СНГ) с заочной аспирантурой. Разработка отлаженной и отказоустойчивой бортовой микроэлектроники нового поколения для современных воздушных судов.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p id="footer-text">© 2026 | Портфолио разработано на базе алгоритмов системного анализа</p>
+    </footer>
+
+    <!-- Логика JavaScript -->
+    <script>
+        // Данные для переключения языков (Словарь)
+        const translations = {
+            ru: {
+                title: "Инженер-Программист & Будущий Пилот",
+                subtitle: "Специалист на стыке нанотехнологий, квантовой механики и авиации",
+                timerLabel: "До запуска алгоритма поступления в УИ ГА (Июнь 2029) осталось:",
+                d: "дней", h: "часов", m: "минут", s: "секунд",
+                card1Title: "Наука и ИТ-Технологии",
+                card1List: `
+                    <li><strong>Бакалавриат (2023–2027):</strong> Нанотехнологии и микросистемная техника (28.03.01).</li>
+                    <li><strong>Магистратура (2027–2029):</strong> Проектирование микросхем и квантовые вычисления в РТУ МИРЭА (28.04.01).</li>
+                    <li><strong>Программирование:</strong> Моделирование физических структур, разработка ПО.</li>
+                `,
+                card2Title: "Авиационные цели",
+                card2List: `
+                    <li><strong>Траектория:</strong> Поступление на очный бюджет УИ ГА в 2029 году (Специалитет 25.05.05).</li>
+                    <li><strong>Оптимизация:</strong> Перезачет ~80% теории благодаря дипломам магистра и бакалавра.</li>
+                    <li><strong>ВЛЭК:</strong> Зрение 1.0 (100%), стабильное АД 110/70, полная бессимптомность.</li>
+                `,
+                card3Title: "Долгосрочная стратегия: Пилот-Исследователь (Post-2034)",
+                card3Text: "Совмещение работы коммерческого пилота на международных линиях (целевые направления: Турция / СНГ) с заочной аспирантурой. Разработка отлаженной и отказоустойчивой бортовой микроэлектроники нового поколения для современных воздушных судов.",
+                footer: "© 2026 | Портфолио разработано на базе алгоритмов системного анализа"
+            },
+            tr: {
+                title: "Yazılım Mühendisi & Geleceğin Pilotu",
+                subtitle: "Nanoteknoloji, kuantum mekaniği ve havacılığın kesişiminde bir uzman",
+                timerLabel: "Uİ GA Uçuş Akademisine başvuru algoritmasının başlamasına (Haziran 2029) kalan süre:",
+                d: "gün", h: "saat", m: "dakika", s: "saniye",
+                card1Title: "Bilim ve Bilişim Teknolojileri",
+                card1List: `
+                    <li><strong>Lisans (2023–2027):</strong> Nanoteknoloji ve Mikrosistem Mühendisliği (28.03.01).</li>
+                    <li><strong>Yüksek Lisans (2027–2029):</strong> RTU MIREA'da Mikroçip Tasarımı ve Kuantum Hesaplama (28.04.01).</li>
+                    <li><strong>Yazılım:</strong> Fiziksel yapıların modellenmesi, yazılım geliştirme.</li>
+                `,
+                card2Title: "Havacılık Hedefleri",
+                card2List: `
+                    <li><strong>Rota:</strong> 2029 yılında Uİ GA'da tam devlet burslu pilotaj eğitimi (Uzmanlık 25.05.05).</li>
+                    <li><strong>Optimizasyon:</strong> Lisans ve Yüksek Lisans diplomaları sayesinde teorik derslerin %80'inden muafiyet.</li>
+                    <li><strong>VLEK (Sağlık):</strong> 1.0 Göz (100% keskinlik), stabil 110/70 tansiyon, sıfır ağrı semptomu.</li>
+                `,
+                card3Title: "Uzun Vadeli Strateji: Pilot-Araştırmacı (Post-2034)",
+                card3Text: "Uluslararası hatlarda (Öncelik: Türkiye / BİG) ticari havayolu pilotluğu yaparken aynı zamanda doktora eğitimine devam etmek. Modern uçaklar için yeni nesil radyasyona dayanıklı kuantum işlemciler ve havacılık mikroelektroniği geliştirmek.",
+                footer: "© 2026 | Portföy sistem analizi algoritmaları temelinde geliştirilmiştir"
+            },
+            uz: {
+                title: "Dasturchi-Muhandis & Kelajak Uchuvchisi",
+                subtitle: "Nanotexnologiya, kvant mexanikasi va aviatsiya chorrahasidagi mutaxassis",
+                timerLabel: "UI GA aviatsiya akademiyasiga hujjat topshirish algoritmi boshlanishiga (Iyun 2029) qoldi:",
+                d: "kun", h: "soat", m: "daqiqa", s: "soniya",
+                card1Title: "Elm-fan va IT-Texnologiyalar",
+                card1List: `<li><strong>Bakalavriat (2023–2027):</strong> Nanotexnologiyalar va mikrotizim texnikasi (28.03.01).</li> <li><strong>Magistratura (2027–2029):</strong> RTU MIREAda mikrochplarni loyihalash va kvant hisoblashlari (28.04.01).</li> <li><strong>Dasturlash:</strong> Fizik tuzilmalarni modellashtirish, dasturiy ta'minot yaratish.</li>`,
+                card2Title: "Aviatsiya Maqsadlari",
+                card2List: `<li><strong>Traektoriya:</strong> 2029 yilda UI GAda to'liq davlat granti asosida uchuvchilik ta'limi (25.05.05).</li> <li><strong>Optimizatsiya:</strong> Magistr va bakalavr diplomlari hisobiga nazariy fanlarning 80% idan ozod bo'lish.</li> <li><strong>Tibbiy ko'rik (VLEK):</strong> 1.0 Ko'rish (100%), barqaror 110/70 qon bosimi, umurtqada og'riq belgilarining yo'qligi.</li>`,
+                card3Title: "Uzoq Muddatli Strategiya: Uchuvchi-Tadqiqotchi (Post-2034)",
+                card3Text: "Xalqaro yo'nalishlarda (Ustuvorlik: Turkiya / MDH) tijorat aviakompaniyasi uchuvchisi bo'lib ishlash va parallel ravishda sirtqi aspirantura (PhD). Zamonaviy samolyotlar uchun yangi avlod radiatsiyaga chidamli kvant protsessorlari va mikrotizimlarini ishlab chiqish.",
+                footer: "© 2026 | Portfoli tizimli tahlil algoritmlari asosida ishlab chiqilgan"
+            },
+        en: {
+            title: "Software Engineer & Future Pilot",
+            subtitle: "Specialist at the intersection of nanotechnology, quantum mechanics, and aviation",
+            timerLabel: "Time remaining until the UÍ GA Flight Academy admission algorithm starts (June 2029):",
+            d: "days", h: "hours", m: "minutes", s: "seconds",
+            card1Title: "Science & IT Technologies",
+            card1List: `<li><strong>Bachelor's (2023–2027):</strong> Nanotechnology and Microsystem Engineering (28.03.01).</li> <li><strong>Master's (2027–2029):</strong> Microchip Design and Quantum Computing at RTU MIREA (28.04.01).</li> <li><strong>Programming:</strong> Physical structures modeling, software development.</li>`,
+            card2Title: "Aviation Goals",
+            card2List: `<li><strong>Trajectory:</strong> Admission to UÍ GA on full state budget in 2029 (Specialist degree 25.05.05).</li> <li><strong>Optimization:</strong> ~80% theory waiver due to prospective Master's and Bachelor's degrees.</li> <li><strong>Medical (VLEK):</strong> 1.0 Vision (100% sharp), stable 110/70 blood pressure, absolute zero pain symptoms.</li>`,
+            card3Title: "Long-term Strategy: Research Pilot (Post-2034)",
+            card3Text: "Combining international commercial airline flying (Priority: Turkey / CIS) with a part-time PhD program. Researching and developing radiation-hardened quantum processors and next-generation microelectronics for modern aircraft.",
+            footer: "© 2026 | Portfolio developed based on systems analysis algorithms"
+        }
+
+        };
+        // Функция переключения языков
+        function switchLang(lang) {
+        document.querySelectorAll('.btn-lang').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        const t = translations[lang];
+        document.getElementById('main-title').innerText = t.title;
+        document.getElementById('main-subtitle').innerText = t.subtitle;
+        document.getElementById('timer-label').innerText = t.timerLabel;
+        document.getElementById('card1-title').innerText = t.card1Title;
+        document.getElementById('card1-list').innerHTML = t.card1List;
+        document.getElementById('card2-title').innerText = t.card2Title;
+        document.getElementById('card2-list').innerHTML = t.card2List;
+        document.getElementById('card3-title').innerText = t.card3Title;
+        document.getElementById('card3-text').innerText = t.card3Text;
+        document.getElementById('footer-text').innerText = t.footer;
+        // Перевод подписей таймера
+        document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        el.innerText = t[key];
+        });
+        }
+        // Логика Таймера обратного отсчета
+        const targetDate = new Date('June 20, 2029 00:00:00').getTime();
+        function updateTimer() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+        if (difference < 0) {
+        document.getElementById('timer-label').innerText = "Алгоритм запущен! Время поступать!";
+        return;
+        }
+        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((difference % (1000 * 60)) / 1000);
+        document.getElementById('days').innerText = d < 10 ? '0' + d : d;
+        document.getElementById('hours').innerText = h < 10 ? '0' + h : h;
+        document.getElementById('minutes').innerText = m < 10 ? '0' + m : m;
+        document.getElementById('seconds').innerText = s < 10 ? '0' + s : s;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer(); // Первый запуск
+        document.addEventListener('DOMContentLoaded', () => {
+        const body = document.body;
+
+        // 1. Check for a previously saved theme choice, otherwise fall back to system preference
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+        if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
+            body.classList.add('light-theme');
+        } else {
+            body.classList.remove('light-theme'); // Defaults to your cyber dark theme
+        }
+
+        // 2. Optional: Function to toggle the theme when a button is clicked
+        window.toggleTheme = () => {
+            body.classList.toggle('light-theme');
+            
+            // Save the user's explicit preference to localStorage
+            if (body.classList.contains('light-theme')) {
+            localStorage.setItem('portfolio-theme', 'light');
+            } else {
+            localStorage.setItem('portfolio-theme', 'dark');
+            }
+        };
+
+        // 3. Optional: Listen for real-time changes to the system theme settings
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('portfolio-theme')) {
+            if (e.matches) {
+                body.classList.add('light-theme');
+            } else {
+                body.classList.remove('light-theme');
+            }
+            }
+        });
+        });
+
+    </script>
+ </body>
+</html>
